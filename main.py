@@ -36,15 +36,31 @@ while True:
             print("Wrong coords")
             continue
 
-        for i in range(game_size):
-                if game_field[i][0] == current_player and game_field[i][1] == current_player and game_field[i][2] == current_player:
-                    print("You won")
-                    game_is_on = False
+        # for i in range(game_size):
+        #         if game_field[i][0] == current_player and game_field[i][1] == current_player and game_field[i][2] == current_player:
+        #             print("You won")
+        #             game_is_on = False
                     
+        # for i in range(game_size):
+        #         if game_field[0][i] == current_player and game_field[1][i] == current_player and game_field[2][i] == current_player:
+        #             print("You won")
+        #             game_is_on = False
+
+        # rows
         for i in range(game_size):
-                if game_field[0][i] == current_player and game_field[1][i] == current_player and game_field[2][i] == current_player:
-                    print("You won")
-                    game_is_on = False
+            if all(game_field[i][j] == current_player for j in range(game_size)):
+                print("You won")
+                game_is_on = False
+                break
+
+        # columns
+        for j in range(game_size):
+            if all(game_field[i][j] == current_player for i in range(game_size)):
+                print("You won")
+                game_is_on = False
+                break
+        
+        
 
         # 00 11 22
         need_to_win = 0
